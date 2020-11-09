@@ -93,7 +93,7 @@
     }
 
     async function sendMsg() {
-      if (liff.getContext().type !== "none") {
+      if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
         await liff.sendMessages([
           {
             "type": "sticker",
@@ -107,11 +107,11 @@
 
     function getContext() {
       if (liff.getContext() != null) {
-        document.getElementById("type").append(liff.getContext().type)
-        document.getElementById("viewType").append(liff.getContext().viewType)
-        document.getElementById("utouId").append(liff.getContext().utouId)
-        document.getElementById("roomId").append(liff.getContext().roomId)
-        document.getElementById("groupId").append(liff.getContext().groupId)
+        document.getElementById("type").append(liff.getContext().type) // # detect 1on1, room, group, other
+        document.getElementById("viewType").append(liff.getContext().viewType) // size of liff
+        document.getElementById("utouId").append(liff.getContext().utouId) // 1on1 has this value
+        document.getElementById("roomId").append(liff.getContext().roomId) // room has this value
+        document.getElementById("groupId").append(liff.getContext().groupId) // group has this value
       }
     }
 
